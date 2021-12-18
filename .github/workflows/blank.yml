@@ -34,3 +34,17 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.5.0
+        with:
+          # Set always-auth in npmrc
+          always-auth: true
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 14.x # optional
+          # Optional scope for authenticating against scoped registries
+          scope: firebase# optional
+          # Used to pull node distributions from node-versions.  Since there's a default, this is typically not supplied by the user.
+          token: npm_token # optional, default is ${{ github.token }}
+          # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+          cache-dependency-path: firebase-tools@9.6.0 # optional
+
